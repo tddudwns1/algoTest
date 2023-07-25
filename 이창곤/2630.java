@@ -19,7 +19,6 @@ public class practice {
 			for(int j=y; j<n+y; j++) {
 				if(board[x][y] != board[i][j]) {
 					flg = false;
-					//System.out.print(" " + i + "_" + j);
 					break;
 				}				
 			}
@@ -27,9 +26,7 @@ public class practice {
 		}
 		
 		if(flg == true) {
-			//System.out.println(x + " " + y);
 			color[board[x][y]] += 1;	//첫번째 칸 색과 같은 자리 카운트 +1
-			//System.out.println(board[x][y] + "+" + color[board[x][y]]);
 			return;
 		}
 		else if(flg == false) {				//재귀
