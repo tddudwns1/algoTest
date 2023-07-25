@@ -18,37 +18,36 @@ class BOJ1012 {
 			int n = Integer.parseInt(st.nextToken());
 			int k = Integer.parseInt(st.nextToken());
 
-			int[][] map = new int[m][n];
+			boolean[][] map = new boolean[m][n];
 			for (int i = 0; i < k; i++) {
 				st = new StringTokenizer(br.readLine());
-				map[Integer.parseInt(st.nextToken())][Integer.parseInt(st.nextToken())] = 1;
+				map[Integer.parseInt(st.nextToken())][Integer.parseInt(st.nextToken())] = true;
 			}
 			System.out.println(bfs(k, map));
 		}
 	}
 
-	private static int bfs(int k, int[][] map) {
-		Queue<int[]> gganBu = new LinkedList<int[]>();
+	private static int bfs(int k, boolean[][] map) {
+		Queue<int[]> adjacency = new LinkedList<int[]>();
 		int[] dx = { 0, 1, 0, -1 };
 		int[] dy = { 1, 0, -1, 0 };
 		int tot = 0;
 
 		for (int i = 0; i < map.length; i++)
 			for (int j = 0; j < map[0].length; j++)
-				if (map[i][j] == 1) {
-					gganBu.add(new int[] { i, j });
-					map[i][j] = 0;
-					while (!gganBu.isEmpty()) {
-						int[] checked = gganBu.poll();
+				if (map[i][j]) {
+					adjacency.add(new int[] { i, j });
+					map[i][j] = false;
+					while (!adjacency.isEmpty()) {
+						int[] checked = adjacency.poll();
 						if (--k == 0)
 							return tot + 1;
 						for (int d = 0; d < 4; d++) {
 							int x = checked[0] + dx[d];
 							int y = checked[1] + dy[d];
-							if (x >= 0 && x < map.length && y >= 0 && y < map[0].length && map[x][y] == 1) {
-								gganBu.add(new int[] { x, y });
-								map[x][y] = 0;
-							}
+							if (x < 0 || x >= map.length || y < 0 || y >= map[0].length || !map[x][y]) continue;
+							adjacency.add(new int[] { x, y });
+							map[x][y] = false;
 						}
 					}
 					tot++;
