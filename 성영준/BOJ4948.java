@@ -8,7 +8,7 @@ public class BOJ4948 {
 	static boolean[] decimal;
 	public static void setDecimal() {
 		decimal[1] = true;
-		for(int i = 2; i < decimal.length; i++) {
+		for(int i = 2; i < Math.sqrt(decimal.length); i++) {
 			if(!decimal[i]) {
 				int n = 2;
 				while(i * n <= 246912)
