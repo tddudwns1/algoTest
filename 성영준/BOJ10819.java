@@ -9,12 +9,10 @@ public class BOJ10819 {
 	static int[] num;
 	static int T;
 	static int max;
-	static int[] a;
 
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		T = Integer.parseInt(br.readLine());
-		a = new int[T];
 		nums = new int[T];
 		num = new int[T];
 		visit = new boolean[T];
