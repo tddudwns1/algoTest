@@ -20,9 +20,8 @@ public class BOJ2623 {
             int[] check = new int[n + 1];
             Deque<Integer>[] priority = new ArrayDeque[n + 1];
 
-            for (int i = 1; i <= n; i++) {
+            for (int i = 1; i <= n; i++)
                 priority[i] = new ArrayDeque<>();
-            }
 
             for (int t = 0; t < m; t++) {
                 st = new StringTokenizer(br.readLine());
@@ -30,9 +29,8 @@ public class BOJ2623 {
                 int[] ks = new int[k];
                 for (int i = 0; i < k; i++) {
                     ks[i] = Integer.parseInt(st.nextToken());
-                    for (int j = 0; j < i; j++) {
+                    for (int j = 0; j < i; j++)
                         priority[ks[i]].add(ks[j]);
-                    }
                 }
             }
             for (int i = 1; i <= n; i++)
@@ -46,9 +44,8 @@ public class BOJ2623 {
         }
 
         private static void dfs(Deque<Integer>[] priority, int[] check, int idx) {
-            if (check[idx] == 2 || flag) {
+            if (check[idx] == 2 || flag)
                 return;
-            }
 
             if (check[idx] == 1) {
                 flag = true;
@@ -58,9 +55,8 @@ public class BOJ2623 {
             if (!priority[idx].isEmpty())
                 check[idx] = 1;
 
-            while (!priority[idx].isEmpty()) {
+            while (!priority[idx].isEmpty())
                 dfs(priority, check, priority[idx].removeFirst());
-            }
 
             check[idx] = 2;
             sb.append(idx).append("\n");
